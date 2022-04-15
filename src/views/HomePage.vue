@@ -1,0 +1,37 @@
+<template>
+  <div class="home container">
+    <Post :post="post" v-for="post in validPosts" :key="post.id" />
+  </div>
+</template>
+
+<script>
+import { mapGetters, mapActions } from "vuex";
+export default {
+  name: 'Home',
+  components: {
+    Post: () => import('@/components/Post.vue')
+  },
+  computed: mapGetters(["validPosts", "postsCount"]),
+  methods: mapActions(["fetchPosts"]),
+  async mounted() {
+    this.fetchPosts(9);
+  }
+}
+</script>
+
+<style scoped>
+.home {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 40px;
+  column-gap: 23px;
+  margin-bottom: 40px;
+}
+
+@media screen and (max-width: 768px) {
+  .home {
+    grid-template-columns: 1fr;
+  }
+}
+
+</style>
