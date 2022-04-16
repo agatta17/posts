@@ -3,11 +3,11 @@
     <div class="comments__title">
       Комментарии
     </div>
-    <div class="comments__item comment">
+    <div class="comments__item comment" v-for="comment in comments" :key="comment.id">
       <div class="comment__avatar"></div>
       <div class="comment__content">
-        <div class="comment__name">Чувак</div>
-        <div class="comment__text">Коммент</div>
+        <div class="comment__name">{{comment.name}}</div>
+        <div class="comment__text">{{comment.body}}</div>
       </div>
     </div>
   </div>
@@ -15,7 +15,12 @@
 
 <script>
 export default {
-  name: 'Comments'
+  name: 'Comments',
+  computed: {
+    comments() {
+      return this.$store.state.posts.comments;
+    }
+  },
 }
 </script>
 
@@ -28,6 +33,10 @@ export default {
     font-size: 24px;
     margin-bottom: 38px;
   }
+
+  &__item {
+    margin-bottom: 36px;
+  }
 }
 
 .comment {
@@ -35,6 +44,7 @@ export default {
   font-size: 18px;
 
   &__avatar {
+    flex-shrink: 0;
     width: 36px;
     height: 36px;
     margin-right: 12px;

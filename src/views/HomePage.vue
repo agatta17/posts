@@ -1,17 +1,21 @@
 <template>
   <div class="home container">
-    <Post :post="post" v-for="post in validPosts" :key="post.id" />
+    <Post :post="post" v-for="post in posts" :key="post.id" />
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapActions } from "vuex";
 export default {
   name: 'Home',
   components: {
     Post: () => import('@/components/Post.vue')
   },
-  computed: mapGetters(["validPosts", "postsCount"]),
+  computed: {
+    posts() {
+      return this.$store.state.posts.posts;
+    }
+  },
   methods: mapActions(["fetchPosts"]),
   async mounted() {
     this.fetchPosts(9);
