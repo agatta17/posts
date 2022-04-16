@@ -14,11 +14,14 @@ export default {
   computed: {
     posts() {
       return this.$store.state.posts.posts;
+    },
+    limit() {
+      return this.$store.state.posts.limit;
     }
   },
   methods: mapActions(["fetchPosts"]),
   async mounted() {
-    this.fetchPosts({limit: 9, query: 'repellat'});
+    this.fetchPosts({limit: this.limit});
   }
 }
 </script>

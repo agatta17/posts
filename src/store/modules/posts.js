@@ -58,10 +58,15 @@ export default {
     },
     editPost(state, postBody) {
       state.post.body = postBody
+    },
+    updateQuery(state, query) {
+      state.query = query
     }
   },
   state: {
     isLoading: false,
+    limit: 9,
+    query: '',
     posts: [],
     post: {},
     comments: []
