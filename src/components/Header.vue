@@ -1,10 +1,10 @@
 <template>
   <header class="header">
     <div class="header__content container">
-      <div class="header__logo">Logo</div>
+      <router-link to="/" class="header__logo">Logo</router-link>
       <div class="header__column">
         <Search />
-        <div class="header__title">Посты</div>
+        <router-link to="/" class="header__title">Посты</router-link>
       </div>
       </div>
   </header>
@@ -35,6 +35,8 @@ export default {
   &__logo {
     font-weight: 700;
     font-size: 20px;
+    color: #000;
+    text-decoration: none;
   }
 
   &__column {
@@ -51,6 +53,7 @@ export default {
     font-size: 14px;
     color: #FF008A;
     position: relative;
+    text-decoration: none;
 
     &::before {
       content: '';
