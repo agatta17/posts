@@ -18,7 +18,7 @@ export default {
   },
   methods: mapActions(["fetchPosts"]),
   async mounted() {
-    this.fetchPosts(9);
+    this.fetchPosts({limit: 9, query: 'repellat'});
   }
 }
 </script>
