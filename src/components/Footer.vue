@@ -18,6 +18,7 @@ export default {
   border-top: 1px solid #E8E8E8;
   font-size: 16px;
   font-family: 'Inter', sans-serif;
+  margin-top: 136px;
 
   &__content {
     padding: 30px 0 39px 0;

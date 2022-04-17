@@ -1,6 +1,9 @@
 <template>
-  <div class="home container">
-    <Post :post="post" v-for="post in posts" :key="post.id" />
+  <div class="container">
+    <div class="home">
+      <Post :post="post" v-for="post in posts" :key="post.id" />
+    </div>
+    <Pagination />
   </div>
 </template>
 
@@ -9,7 +12,8 @@ import { mapActions } from "vuex";
 export default {
   name: 'Home',
   components: {
-    Post: () => import('@/components/Post.vue')
+    Post: () => import('@/components/Post.vue'),
+    Pagination: () => import('@/components/Pagination.vue')
   },
   computed: {
     posts() {
