@@ -23,6 +23,7 @@ export default {
 html, body {
   margin: 0;
   height: 100%;
+  font-family: "Manrope", sans-serif;
 }
 #app {
   min-height: 100%;

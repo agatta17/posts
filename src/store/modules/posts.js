@@ -2,17 +2,13 @@ import apiFetch from '@/utils/api';
 
 export default {
   actions: {
-    async fetchPosts({ commit }, params) {
+    async fetchPosts({ state, commit }) {
       let query = ''
-      if (params.query) query = `&q=${params.query}`
+      if (state.query) query = `&q=${state.query}`
       let page = ''
-      if (params.page) {
-        page = `&_page=${params.page}`
-      } else {
-        commit('updatePage', 1)
-      }
+      if (state.page) page = `&_page=${state.page}`
       const res = await apiFetch(
-        `https://jsonplaceholder.typicode.com/posts?_embed=comments${page}&_limit=${params.limit}${query}`
+        `https://jsonplaceholder.typicode.com/posts?_embed=comments${page}&_limit=${state.limit}${query}`
       )
       if (!res.ok) {return;}
       const posts = await res.json()
@@ -75,6 +71,11 @@ export default {
     },
     updatePostsCount(state, postCount) {
       state.postCount = Number(postCount)
+    }
+  },
+  getters: {
+    pagesTotal(state) {
+      return Math.ceil(state.postCount / state.limit);
     }
   },
   state: {

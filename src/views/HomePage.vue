@@ -1,14 +1,14 @@
 <template>
   <div class="container">
-    <div class="home">
-      <Post :post="post" v-for="post in posts" :key="post.id" />
+    <div class="home" v-if="posts.length">
+      <Post :post="post" v-for="post in posts" :key="post.id"/>
     </div>
-    <Pagination />
+    <h1 v-else>Посты не найдены</h1>
+    <Pagination v-if="pagesTotal > 1" />
   </div>
 </template>
 
 <script>
-import { mapActions } from "vuex";
 export default {
   name: 'Home',
   components: {
@@ -19,13 +19,12 @@ export default {
     posts() {
       return this.$store.state.posts.posts;
     },
-    limit() {
-      return this.$store.state.posts.limit;
-    }
+    pagesTotal() {
+      return this.$store.getters.pagesTotal;
+    },
   },
-  methods: mapActions(["fetchPosts"]),
   async mounted() {
-    this.fetchPosts({limit: this.limit});
+    this.$store.dispatch('fetchPosts')
   }
 }
 </script>

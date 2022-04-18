@@ -17,7 +17,7 @@ export default {
         return this.$store.state.posts.query;
       },
       set: function (newValue) {
-        this.$store.commit('updateQuery', newValue)
+        this.$store.commit('updateQuery', newValue);
       }
     },
     limit() {
@@ -26,7 +26,8 @@ export default {
   },
   methods: {
     fetchPosts() {
-      this.$store.dispatch('fetchPosts', {limit: this.limit, query: this.query})
+      this.$store.commit('updatePage', 1);
+      this.$store.dispatch('fetchPosts');
     }
   }
 }
