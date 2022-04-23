@@ -1,7 +1,10 @@
 <template>
   <div class="container">
     <div class="home" v-if="posts.length">
-      <Post :post="post" v-for="post in posts" :key="post.id"/>
+      <template v-for="post in posts">
+        <Post v-if="$mq === 'lg'" :post="post" :key="post.id"/>
+        <PostMobile v-else :post="post" :key="post.id"/>
+      </template>
     </div>
     <h1 v-else>Посты не найдены</h1>
     <Pagination v-if="pagesTotal > 1" />
@@ -13,6 +16,7 @@ export default {
   name: 'Home',
   components: {
     Post: () => import('@/components/Post.vue'),
+    PostMobile: () => import ('@/components/PostMobile'),
     Pagination: () => import('@/components/Pagination.vue')
   },
   computed: {
@@ -24,24 +28,20 @@ export default {
     },
   },
   async mounted() {
+    if (this.$mq === 'sm') this.$store.commit('updateLimit', 3);
     this.$store.dispatch('fetchPosts')
   }
 }
 </script>
 
 <style scoped>
-.home {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  row-gap: 40px;
-  column-gap: 23px;
-  margin-bottom: 40px;
-}
-
-@media screen and (max-width: 768px) {
+@media (min-width: 768px) {
   .home {
-    grid-template-columns: 1fr;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 40px;
+    column-gap: 23px;
+    margin-bottom: 40px;
   }
 }
-
 </style>

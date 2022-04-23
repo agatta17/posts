@@ -71,7 +71,10 @@ export default {
     },
     updatePostsCount(state, postCount) {
       state.postCount = Number(postCount)
-    }
+    },
+    updateLimit(state, limit) {
+      state.limit = limit
+    },
   },
   getters: {
     pagesTotal(state) {
