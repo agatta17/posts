@@ -160,7 +160,6 @@ export default {
     border: 1px solid #E2E2E2;
     box-sizing: border-box;
     border-radius: 4px;
-    font-family: 'SF Pro Regular', sans-serif;
     font-size: 14px;
     font-weight: 700;
     cursor: pointer;
