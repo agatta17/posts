@@ -21,7 +21,8 @@ export default {
   margin-top: 136px;
 
   &__content {
-    padding: 30px 0 39px 0;
+    padding-top: 30px;
+    padding-bottom: 39px;
   }
 }
 </style>
