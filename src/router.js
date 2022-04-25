@@ -2,6 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HomePage from '@/views/HomePage'
 import store from './store'
+import { publicPath } from '../vue.config'
+
+console.log(publicPath)
 
 Vue.use(Router)
 
@@ -10,12 +13,12 @@ const router = new Router({
   routes: [
     {
       name: 'Home',
-      path: '/',
+      path: publicPath,
       component: HomePage
     },
     {
       name: 'Post',
-      path: '/post:id',
+      path: `${publicPath}post:id`,
       component: () => import('@/views/PostPage.vue')
     }
   ]
