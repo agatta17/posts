@@ -1,19 +1,20 @@
 <template>
   <div id="app">
-    <Header />
+    <Header v-if="$mq === 'lg'" />
+    <HeaderMobileHome v-else-if="$route.name === 'Home'" />
     <main class="main">
       <router-view/>
     </main>
-    <Footer />
+    <Footer v-if="$mq === 'lg'" />
   </div>
 </template>
 
 <script>
-import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
 export default {
   components: {
-    Header,
+    Header: () => import('@/components/Header.vue'),
+    HeaderMobileHome: () => import('@/components/HeaderMobileHome.vue'),
     Footer
   },
 }
