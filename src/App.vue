@@ -2,6 +2,7 @@
   <div id="app">
     <Header v-if="$mq === 'lg'" />
     <HeaderMobileHome v-else-if="$route.name === 'Home'" />
+    <HeaderMobilePost v-else-if="$route.name === 'Post'" />
     <main class="main">
       <router-view/>
     </main>
@@ -10,12 +11,12 @@
 </template>
 
 <script>
-import Footer from '@/components/Footer.vue';
 export default {
   components: {
     Header: () => import('@/components/Header.vue'),
     HeaderMobileHome: () => import('@/components/HeaderMobileHome.vue'),
-    Footer
+    HeaderMobilePost: () => import('@/components/HeaderMobilePost.vue'),
+    Footer: () => import('@/components/Footer.vue')
   },
 }
 </script>
