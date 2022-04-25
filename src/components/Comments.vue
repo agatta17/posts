@@ -63,4 +63,27 @@ export default {
   }
 }
 
+@media (max-width: 767px) {
+  .comments {
+    &__title {
+      font-size: 20px;
+      margin-bottom: 28px;
+    }
+
+    &__item {
+      margin-bottom: 16px;
+    }
+  }
+
+  .comment {
+    &__name {
+      margin-bottom: 1px;
+    }
+
+    &__text {
+      font-size: 17px;
+    }
+  }
+}
+
 </style>
