@@ -149,10 +149,10 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .pagination {
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
 
   &__item {
     width: 32px;

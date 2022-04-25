@@ -34,7 +34,20 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss">
+@media (max-width: 767px) {
+  .home {
+    padding-bottom: 16px;
+  }
+
+  .pagination {
+    height: 67px;
+    background: #FAFAFA;
+    margin: 0 -15px 0 -15px;
+    justify-content: center;
+  }
+}
+
 @media (min-width: 768px) {
   .home {
     display: grid;
@@ -42,6 +55,10 @@ export default {
     row-gap: 40px;
     column-gap: 23px;
     margin-bottom: 40px;
+  }
+
+  .pagination {
+    justify-content: flex-end;
   }
 }
 </style>
