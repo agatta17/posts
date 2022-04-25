@@ -39,12 +39,12 @@ export default {
 
   &__icon {
     position: absolute;
-    top: 9px;
+    top: 14px;
     left: 8px;
   }
 
   &__input {
-    font-family: 'SF Pro Text', sans-serif;
+    font-family: 'SF Pro Regular', sans-serif;
     font-size: 17px;
     background: rgba(60, 60, 67, 0.1);
     border-radius: 10px;
@@ -57,6 +57,10 @@ export default {
   }
 
   @media (max-width: 768px) {
+    &__icon {
+      top: 9px;
+    }
+
     &__input {
       width: 100%;
       height: 36px;
