@@ -6,7 +6,7 @@
         <PostMobile v-else :post="post" :key="post.id"/>
       </template>
     </div>
-    <h1 v-else>Посты не найдены</h1>
+    <h1 v-else>{{isLoading ? 'Загрузка...' : 'Посты не найдены'}}</h1>
     <Pagination v-if="pagesTotal > 1" />
   </div>
 </template>
@@ -26,6 +26,9 @@ export default {
     pagesTotal() {
       return this.$store.getters.pagesTotal;
     },
+    isLoading() {
+      return this.$store.state.posts.isLoading;
+    }
   },
   async mounted() {
     if (this.$mq === 'sm') this.$store.commit('updateLimit', 3);

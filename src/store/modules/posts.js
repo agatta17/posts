@@ -7,9 +7,11 @@ export default {
       if (state.query) query = `&q=${state.query}`
       let page = ''
       if (state.page) page = `&_page=${state.page}`
+      commit('updateIsLoading', true)
       const res = await apiFetch(
         `https://jsonplaceholder.typicode.com/posts?_embed=comments${page}&_limit=${state.limit}${query}`
       )
+      commit('updateIsLoading', false)
       if (!res.ok) {return;}
       const posts = await res.json()
       const postCount = res.headers.get('x-total-count')
